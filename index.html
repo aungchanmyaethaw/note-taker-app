@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+        <script
+            src="https://kit.fontawesome.com/bb827868b4.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="src/style.css" />
+        <script defer src="app.js"></script>
+        <title>Keep Notes</title>
+    </head>
+    <body>
+        <audio
+            src="https://github.com/thethmuu/keep-notes-app/blob/continue-test/sound/on-off-sound.mp3?raw=true"
+            class="toggle-sound"
+        ></audio>
+        <!-- modal -->
+
+        <dialog id="modal">
+            <button class="modal__btn">&times</button>
+            <h2 class="modal__title"></h2>
+            <p class="modal__body"></p>
+        </dialog>
+
+        <!-- form -->
+        <nav>
+            <button class="toggle__btn">button</button>
+        </nav>
+        <div class="form-container">
+            <h1>Keep Notes</h1>
+            <!-- <div class="message">This is Testing!</div> -->
+            <form>
+                <input type="text" id="title" placeholder="Title" />
+
+                <textarea
+                    type="text"
+                    id="note"
+                    cols="30"
+                    rows="5"
+                    placeholder="Take a note...`"
+                ></textarea>
+
+                <button type="submit">Save</button>
+            </form>
+        </div>
+
+        <!-- note -->
+        <div class="note-container">
+            <!-- for prototype -->
+            <!-- <div class="note">
+                <h2 class="note__title">CSS Position</h2>
+                <p class="note__body">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Magnam praesentium distinctio eveniet, reiciendis culpa
+                    dolorum. Incidunt magni facere corporis id sint sit
+                    excepturi, ut exercitationem nam nemo quia, itaque fuga,
+                    maxime at. Fugiat tempora laudantium delectus ab cumque
+                    itaque nostrum!
+                </p>
+                <div class="note__btns">
+                    <button class="note__btn note__view">
+                        <i class="fa-solid fa-eye"></i>
+                    </button>
+                    <button class="note__btn note__delete">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </div>
+            </div> -->
+        </div>
+    </body>
+</html>
