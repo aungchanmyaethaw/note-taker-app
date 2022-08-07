@@ -24,12 +24,16 @@ $transition: all 250ms ease-out;
     box-sizing: border-box;
 }
 
+* {
+    transition: all 200ms ease-in;
+}
+
 :root {
     --bg-light: #f3f4f6;
-    --text-light: ;
+    --text-light: #121614;
 
-    --bg-dark: #121614;
-    --text-dark: ;
+    --bg-dark: #1f2329;
+    --text-dark: #f3f4f6;
 }
 
 [color-scheme='light'] {
@@ -44,22 +48,132 @@ $transition: all 250ms ease-out;
 
 body {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    overflow-x: hidden;
     font-family: 'Roboto', sans-serif;
     color: $primary;
     background-color: var(--bg-color);
 }
 
-nav {
-    width: 100vw;
+.aside {
+    min-width: 20vw;
+    padding: 2em 0;
+    border-right: 1px solid rgba($light, 0.5);
+    display: none;
+
+    @media (min-width: 640px) {
+        display: block;
+    }
+    h1 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        text-align: center;
+    }
+
+    .categories-container {
+        margin-top: 0.5em;
+
+        li {
+            list-style: none;
+            text-align: center;
+            font-weight: 400;
+            padding: 1em 0;
+            border-bottom: 1px solid rgba($light, 0.5);
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba($light, 0.5);
+            }
+
+            span {
+                pointer-events: none;
+            }
+        }
+    }
+}
+
+.container {
+    width: 90%;
+    max-width: 960px;
+    margin: 0 auto;
+
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    padding: 1em 0;
+    // justify-content: end;
+    justify-content: space-between;
 
     .toggle__btn {
+        width: 32px;
+        height: 32px;
         margin-right: 2em;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+}
+
+#search {
+    padding: 0.5em 1em;
+    border-radius: 24px;
+
+    @media (min-width: 640px) {
+        padding: 0.75em 1em;
+    }
+}
+
+input,
+textarea,
+select {
+    padding: 0.5em;
+    flex: 1 1 100%;
+    font-size: inherit;
+    font-family: inherit;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    border: 2px solid transparent;
+    outline: 2px solid transparent;
+    border-radius: 0.25em;
+    box-shadow: $shadow;
+    transition: $transition;
+
+    &:focus {
+        box-shadow: none;
+        border: 2px solid $success;
+        outline: $success;
+    }
+}
+
+.modal {
+    min-width: 30rem;
+    max-height: 50vh;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2em;
+    border-radius: 8px;
+
+    .modal__title {
+        margin-bottom: 0.5em;
+    }
+
+    .modal__btn {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        position: absolute;
+        top: 1em;
+        right: 1em;
+        cursor: pointer;
     }
 }
 
@@ -101,25 +215,6 @@ nav {
         box-shadow: $shadow;
         border-radius: 6px;
 
-        input,
-        textarea {
-            padding: 0.5em;
-            flex: 1 1 100%;
-            font-size: inherit;
-            font-family: inherit;
-            border: 2px solid transparent;
-            outline: 2px solid transparent;
-            border-radius: 0.25em;
-            box-shadow: $shadow;
-            transition: $transition;
-
-            &:focus {
-                box-shadow: none;
-                border: 2px solid $success;
-                outline: $success;
-            }
-        }
-
         textarea {
             resize: none;
         }
@@ -149,12 +244,12 @@ nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 0.5em;
+    gap: 1em;
 
     .note {
         padding: 1em;
         flex: 0 1 24%;
-        background-color: #fff;
+        background-color: var(--bg-color);
         box-shadow: $shadow;
         border-radius: 6px;
 

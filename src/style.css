@@ -1,168 +1,250 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&display=swap");
 *,
 *::after,
 *::before {
-    border: 0;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+* {
+  transition: all 200ms ease-in;
 }
 
 :root {
-    --bg-light: #f3f4f6;
-    --text-light: ;
-    --bg-dark: #121614;
-    --text-dark: ;
+  --bg-light: #f3f4f6;
+  --text-light: #121614;
+  --bg-dark: #1f2329;
+  --text-dark: #f3f4f6;
 }
 
-[color-scheme='light'] {
-    --bg-color: var(--bg-light);
-    --text-color: var(--text-light);
+[color-scheme=light] {
+  --bg-color: var(--bg-light);
+  --text-color: var(--text-light);
 }
 
-[color-scheme='dark'] {
-    --bg-color: var(--bg-dark);
-    --text-color: var(--text-dark);
+[color-scheme=dark] {
+  --bg-color: var(--bg-dark);
+  --text-color: var(--text-dark);
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 2em;
-    font-family: 'Roboto', sans-serif;
-    color: #444;
-    background-color: var(--bg-color);
-    transition: all 200ms ease;
+  display: flex;
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+  color: #444;
+  background-color: var(--bg-color);
+}
+
+.aside {
+  min-width: 20vw;
+  padding: 2em 0;
+  border-right: 1px solid rgba(204, 204, 204, 0.5);
+  display: none;
+}
+@media (min-width: 640px) {
+  .aside {
+    display: block;
+  }
+}
+.aside h1 {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+}
+.aside .categories-container {
+  margin-top: 0.5em;
+}
+.aside .categories-container li {
+  list-style: none;
+  text-align: center;
+  font-weight: 400;
+  padding: 1em 0;
+  border-bottom: 1px solid rgba(204, 204, 204, 0.5);
+  cursor: pointer;
+}
+.aside .categories-container li:hover {
+  background-color: rgba(204, 204, 204, 0.5);
+}
+.aside .categories-container li span {
+  pointer-events: none;
+}
+
+.container {
+  width: 90%;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 nav {
-    width: 100vw;
-    display: flex;
-    justify-content: end;
+  width: 100%;
+  display: flex;
+  padding: 1em 0;
+  justify-content: space-between;
 }
 nav .toggle__btn {
-    margin-right: 2em;
+  width: 32px;
+  height: 32px;
+  margin-right: 2em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#search {
+  padding: 0.5em 1em;
+  border-radius: 24px;
+}
+@media (min-width: 640px) {
+  #search {
+    padding: 0.75em 1em;
+  }
+}
+
+input,
+textarea,
+select {
+  padding: 0.5em;
+  flex: 1 1 100%;
+  font-size: inherit;
+  font-family: inherit;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: 2px solid transparent;
+  outline: 2px solid transparent;
+  border-radius: 0.25em;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+  transition: all 250ms ease-out;
+}
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow: none;
+  border: 2px solid #4ade80;
+  outline: #4ade80;
+}
+
+.modal {
+  min-width: 30rem;
+  max-height: 50vh;
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 2em;
+  border-radius: 8px;
+}
+.modal .modal__title {
+  margin-bottom: 0.5em;
+}
+.modal .modal__btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  cursor: pointer;
 }
 
 .form-container {
-    max-width: 960px;
-    margin: 0 auto;
-    text-align: center;
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
 }
 .form-container h1 {
-    font-size: 1.5rem;
-    margin-bottom: 2em;
+  font-size: 1.5rem;
+  margin-bottom: 2em;
 }
 .form-container .message {
-    padding: 1em 0;
-    margin-bottom: 1em;
-    color: #121614;
-    font-weight: 500;
+  padding: 1em 0;
+  margin-bottom: 1em;
+  color: #121614;
+  font-weight: 500;
 }
 .form-container .message.success {
-    background-color: #4ade80;
+  background-color: #4ade80;
 }
 .form-container .message.failed {
-    background-color: #ef4444;
+  background-color: #ef4444;
 }
 .form-container .message.delete {
-    background-color: #81cacf;
+  background-color: #81cacf;
 }
 .form-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    margin-bottom: 2em;
-    padding: 2em;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
-        0 1px 3px 1px rgba(60, 64, 67, 0.149);
-    border-radius: 6px;
-}
-.form-container form input,
-.form-container form textarea {
-    padding: 0.5em;
-    flex: 1 1 100%;
-    font-size: inherit;
-    font-family: inherit;
-    border: 2px solid transparent;
-    outline: 2px solid transparent;
-    border-radius: 0.25em;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
-        0 1px 3px 1px rgba(60, 64, 67, 0.149);
-    transition: all 250ms ease-out;
-}
-.form-container form input:focus,
-.form-container form textarea:focus {
-    box-shadow: none;
-    border: 2px solid #4ade80;
-    outline: #4ade80;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 2em;
+  padding: 2em;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+  border-radius: 6px;
 }
 .form-container form textarea {
-    resize: none;
+  resize: none;
 }
-.form-container form button[type='submit'] {
-    padding: 0.75em 0;
-    background-color: #444;
-    color: #f3f4f6;
-    font-family: inherit;
-    font-size: inherit;
-    border: none;
-    cursor: pointer;
-    transition: all 250ms ease-out;
+.form-container form button[type=submit] {
+  padding: 0.75em 0;
+  background-color: #444;
+  color: #f3f4f6;
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  cursor: pointer;
+  transition: all 250ms ease-out;
 }
-.form-container form button[type='submit']:hover,
-.form-container form button[type='submit']:focus {
-    background-color: #121614;
+.form-container form button[type=submit]:hover, .form-container form button[type=submit]:focus {
+  background-color: #121614;
 }
 
 .note-container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.5em;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
 }
 .note-container .note {
-    padding: 1em;
-    flex: 0 1 24%;
-    background-color: #fff;
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302),
-        0 1px 3px 1px rgba(60, 64, 67, 0.149);
-    border-radius: 6px;
+  padding: 1em;
+  flex: 0 1 24%;
+  background-color: var(--bg-color);
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.302), 0 1px 3px 1px rgba(60, 64, 67, 0.149);
+  border-radius: 6px;
 }
 .note-container .note .note__title {
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 0.5em;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5em;
 }
 .note-container .note .note__body {
-    font-size: 0.9rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 4;
+  font-size: 0.9rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 4;
 }
 .note-container .note .note__btns {
-    margin-top: 1em;
-    display: flex;
-    justify-content: end;
-    gap: 0.5em;
+  margin-top: 1em;
+  display: flex;
+  justify-content: end;
+  gap: 0.5em;
 }
 .note-container .note .note__btns .note__btn {
-    font-size: 0.75rem;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 250ms ease-out;
+  font-size: 0.75rem;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 250ms ease-out;
 }
 .note-container .note .note__btns .note__btn i {
-    pointer-events: none;
+  pointer-events: none;
 }
-.note-container .note .note__btns .note__btn:hover,
-.note-container .note .note__btns .note__btn:focus {
-    background-color: #ccc;
-} /*# sourceMappingURL=style.css.map */
+.note-container .note .note__btns .note__btn:hover, .note-container .note .note__btns .note__btn:focus {
+  background-color: #ccc;
+}/*# sourceMappingURL=style.css.map */

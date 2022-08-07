@@ -10,48 +10,72 @@
             crossorigin="anonymous"
         ></script>
         <link rel="stylesheet" href="src/style.css" />
+        <link
+            href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+            rel="stylesheet"
+        />
         <script defer src="app.js"></script>
+
         <title>Keep Notes</title>
     </head>
     <body>
-        <audio
+        <!-- <audio
             src="https://github.com/thethmuu/keep-notes-app/blob/continue-test/sound/on-off-sound.mp3?raw=true"
             class="toggle-sound"
-        ></audio>
+        ></audio> -->
         <!-- modal -->
 
-        <dialog id="modal">
+        <dialog id="modal" class="modal">
             <button class="modal__btn">&times</button>
             <h2 class="modal__title"></h2>
             <p class="modal__body"></p>
         </dialog>
+        <aside class="aside">
+            <h1>Categories</h1>
+            <ul class="categories-container"></ul>
+        </aside>
+        <div class="container">
+            <!-- form -->
+            <nav>
+                <label for="search">
+                    <input
+                        type="search"
+                        id="search"
+                        autocomplete="off"
+                        spellcheck="false"
+                        placeholder="Type to search notes..."
+                    />
+                </label>
+                <button class="toggle__btn">button</button>
+            </nav>
+            <div class="form-container">
+                <h1>Keep Notes</h1>
+                <!-- <div class="message">This is Testing!</div> -->
+                <form>
+                    <input type="text" id="title" placeholder="Title" />
 
-        <!-- form -->
-        <nav>
-            <button class="toggle__btn">button</button>
-        </nav>
-        <div class="form-container">
-            <h1>Keep Notes</h1>
-            <!-- <div class="message">This is Testing!</div> -->
-            <form>
-                <input type="text" id="title" placeholder="Title" />
+                    <textarea
+                        type="text"
+                        id="note"
+                        cols="30"
+                        rows="5"
+                        placeholder="Take a note..."
+                    ></textarea>
 
-                <textarea
-                    type="text"
-                    id="note"
-                    cols="30"
-                    rows="5"
-                    placeholder="Take a note...`"
-                ></textarea>
+                    <select name="categories" id="categories">
+                        <!-- <option value="1">personal</option>
+                        <option value="2">coding</option>
+                        <option value="3">hobby</option> -->
+                    </select>
 
-                <button type="submit">Save</button>
-            </form>
-        </div>
+                    <button type="submit">Save</button>
+                </form>
+            </div>
 
-        <!-- note -->
-        <div class="note-container">
-            <!-- for prototype -->
-            <!-- <div class="note">
+            <!-- note -->
+            <div class="note-container">
+                <!-- for prototype -->
+                <!-- <div class="note">
                 <h2 class="note__title">CSS Position</h2>
                 <p class="note__body">
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit.
@@ -70,6 +94,11 @@
                     </button>
                 </div>
             </div> -->
+            </div>
         </div>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            AOS.init();
+        </script>
     </body>
 </html>
